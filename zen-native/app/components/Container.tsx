@@ -6,7 +6,7 @@ export type AppContainerProps = {
     gap?: number;
 }
 // @ts-ignore
-const AppContainer = ({children, gap = 8}: AppContainerProps) => {
+const Container = ({children, gap = 8}: AppContainerProps) => {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -27,4 +27,4 @@ const AppContainer = ({children, gap = 8}: AppContainerProps) => {
 }
 
 
-export default AppContainer;
+export default Container;

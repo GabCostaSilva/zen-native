@@ -1,15 +1,7 @@
-import {
-    KeyboardAvoidingView,
-    NativeSyntheticEvent,
-    Platform,
-    ScrollView,
-    StatusBar,
-    TextInputChangeEventData
-} from "react-native";
+import {KeyboardAvoidingView, NativeSyntheticEvent, Platform, StatusBar, TextInputChangeEventData} from "react-native";
 import FormControl from "@/app/components/FormControl";
 import {useState} from "react";
-import {ScreenType} from "@/app/screens/screen-type";
-import AppContainer from "@/app/components/AppContainer";
+import Container from "@/app/components/Container";
 
 interface FormState {
     name: string;
@@ -26,18 +18,9 @@ interface ErrorState {
     document: boolean;
 }
 
-export default function Inputs(props: ScreenType) {
-    const [name, setName] = useState('');
-    const [error, setError] = useState(false);
-    const [form, setForm] = useState<FormState>({
-        name: '',
-        email: '',
-        phone: '',
-        document: '',
-        password: '',
-    });
+export default function Inputs() {
 
-    const [errors, setErrors] = useState<ErrorState>({
+    const [errors] = useState<ErrorState>({
         name: false,
         email: false,
         phone: false,
@@ -51,22 +34,7 @@ export default function Inputs(props: ScreenType) {
         });
     };
 
-    const validateEmail = (email: string) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    const validatePhone = (phone: string) => {
-        const phoneRegex = /^\+?[1-9]\d{1,14}$/;
-        return phoneRegex.test(phone);
-    };
-
-    const validateDocument = (document: string) => {
-        // Example validation for a document number (adjust as necessary)
-        return document.length >= 5;
-    };
-
-    return <AppContainer>
+    return <Container>
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={{
@@ -129,6 +97,6 @@ export default function Inputs(props: ScreenType) {
                 helperText={"Enter your password"}
                 icon={"lock"}/>
         </KeyboardAvoidingView>
-    </AppContainer>
+    </Container>
 
 }

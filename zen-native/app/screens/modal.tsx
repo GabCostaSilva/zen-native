@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import {Button, Text} from 'react-native';
 import Modal from "@/app/components/Modal";
-import AppContainer from "@/app/components/AppContainer";
-import {ScreenType} from "@/app/screens/screen-type";
+import Container from "@/app/components/Container";
 
-const ModalScreen = (props: ScreenType) => {
+const ModalScreen = () => {
     const [modalVisible, setModalVisible] = useState(false);
 
     const handleOpenModal = () => {
@@ -16,12 +15,12 @@ const ModalScreen = (props: ScreenType) => {
     };
 
     return (
-        <AppContainer>
+        <Container>
                 <Button title="Open Modal" onPress={handleOpenModal}/>
                 <Modal visible={modalVisible} onClose={handleCloseModal} title="My Modal">
                     <Text>This is the content inside the modal!</Text>
                 </Modal>
-        </AppContainer>
+        </Container>
     );
 };
 
