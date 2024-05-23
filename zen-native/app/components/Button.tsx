@@ -38,7 +38,7 @@ export default function Button(props: ButtonProps) {
             },
             text: {
                 color: "white",
-                fontFamily: "Arial",
+                fontFamily: "roboto-regular",
                 fontWeight: "bold",
             }
         })
