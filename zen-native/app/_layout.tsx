@@ -1,24 +1,18 @@
-import {Tabs} from 'expo-router';
+import {Stack} from 'expo-router';
 import React from 'react';
-
-import {Colors} from '@/constants/Colors';
 import {useColorScheme} from '@/hooks/useColorScheme';
+import AppContainer from "@/app/components/AppContainer";
+import {StatusBar} from "react-native";
 
 export default function RootLayout() {
     const colorScheme = useColorScheme();
 
     return (
-        <Tabs
-            screenOptions={{
-                tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-                headerShown: false,
-            }}>
-            <Tabs.Screen
-                name="index"
-                options={{
-                    title: 'Home'
-                }}
-            />
-        </Tabs>
+        <>
+            <StatusBar barStyle={'dark-content'}/>
+            <Stack>
+                <Stack.Screen name="(tabs)" options={{headerShown: false}}/>
+            </Stack>
+        </>
     );
 }

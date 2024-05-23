@@ -1,4 +1,4 @@
-import {ButtonProps as NativeButtonProps, Button as NativeButton, StyleSheet, Pressable, Text} from "react-native";
+import {ButtonProps as NativeButtonProps, Pressable, StyleSheet, Text} from "react-native";
 
 type ButtonProps = NativeButtonProps & {
     action?: "primary" | "secondary" | "positive" | "negative",

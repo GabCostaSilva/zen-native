@@ -1,4 +1,5 @@
 import {TextInput, TextInputProps} from "react-native";
+
 type InputProps = TextInputProps & {
     error?: boolean;
 };
