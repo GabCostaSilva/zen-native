@@ -1,7 +1,18 @@
-import {KeyboardAvoidingView, NativeSyntheticEvent, Platform, StatusBar, TextInputChangeEventData} from "react-native";
+import {
+    KeyboardAvoidingView,
+    NativeSyntheticEvent,
+    Platform,
+    StatusBar,
+    StyleSheet,
+    TextInputChangeEventData,
+    View
+} from "react-native";
 import FormControl from "@/app/components/FormControl";
 import {useState} from "react";
 import Container from "@/app/components/Container";
+import Select from "@/app/components/Select";
+import Checkbox from "@/app/components/Checkbox";
+import RadioButton from "@/app/components/RadioButton";
 
 interface FormState {
     name: string;
@@ -20,12 +31,37 @@ interface ErrorState {
 
 export default function Inputs() {
 
+    const [form, setForm] = useState<FormState>({
+        name: '',
+        email: '',
+        phone: '',
+        document: '',
+        password: '',
+    });
+
     const [errors] = useState<ErrorState>({
         name: false,
         email: false,
         phone: false,
         document: false,
     });
+    const [radioSelectedValue, setRadioSelectedValue] = useState<string>('option1');
+
+    const handleValueChange = (value: string) => {
+        setRadioSelectedValue(value);
+    };
+
+    const [selectedValue, setSelectedValue] = useState<string>('');
+    const [isChecked, setIsChecked] = useState<boolean>(false);
+
+    const handleToggle = () => {
+        setIsChecked(!isChecked);
+    };
+    const items = [
+        {label: 'Option 1', value: 'option1'},
+        {label: 'Option 2', value: 'option2'},
+        {label: 'Option 3', value: 'option3'},
+    ];
 
     const handleChange = (field: keyof FormState, value: string | NativeSyntheticEvent<TextInputChangeEventData>) => {
         setForm({
@@ -96,7 +132,43 @@ export default function Inputs() {
                 error={false}
                 helperText={"Enter your password"}
                 icon={"lock"}/>
+                <Select
+                    label="Choose an option"
+                    items={items}
+                    value={selectedValue}
+                    onValueChange={(value) => setSelectedValue(value)}
+                    placeholder="Select an option"
+                />
+            <Checkbox label={"Checkbox"} isChecked={isChecked} onToggle={handleToggle}/>
+            <View style={styles.radioGroup}>
+                <RadioButton label="Option 1" value="option1" selectedValue={radioSelectedValue} onValueChange={handleValueChange} />
+                <RadioButton label="Option 2" value="option2" selectedValue={radioSelectedValue} onValueChange={handleValueChange} />
+                <RadioButton label="Option 3" value="option3" selectedValue={radioSelectedValue} onValueChange={handleValueChange} />
+            </View>
         </KeyboardAvoidingView>
     </Container>
-
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        padding: 16,
+    },
+    title: {
+        fontSize: 24,
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+    selectedValue: {
+        marginTop: 20,
+        fontSize: 18,
+        textAlign: 'center',
+    },
+    radioGroup: {
+        marginBottom: 20,
+    },
+
+
+
+});

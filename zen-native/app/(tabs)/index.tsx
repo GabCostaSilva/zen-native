@@ -12,7 +12,16 @@ export default function Index() {
                 <Button title="Buttons"/>
             </Link>
             <Link href="/screens/inputs" asChild={true}>
-                <Button title="Inputs"/>
+                <Button title="Form"/>
+            </Link>
+            <Link href="/screens/text" asChild={true}>
+                <Button title="Typography"/>
+            </Link>
+            <Link href={"/screens/structure"} asChild={true}>
+                <Button title="Layout"/>
+            </Link>
+            <Link href={"/screens/feedback"} asChild={true}>
+                <Button title="Feedback"/>
             </Link>
         </View>
     );
@@ -26,15 +35,12 @@ const style = StyleSheet.create({
     },
 })
 //TODO:
-// - CREATE MODAL COMPONENT
-// - CREATE SELECT INPUT
-// - CREATE CHECKBOX INPUT
-// - CREATE RADIO INPUT
-// - CREATE DATE INPUT
+// - CREATE TOAST COMPONENT USING GLUESTACK STYLING
+// - CREATE SPIINER COMPONENT USING GLUESTACK STYLING
+// - CREATE ALERT COMPONENT USING GLUESTACK STYLING
+// - CREATE BADGE COMPONENT USING GLUESTACK STYLING
+// - CREATE AVATAR COMPONENT USING GLUESTACK STYLING
 // - TIME INPUT
-// - CREATE FILE INPUT
-// - CREATE RANGE INPUT
-// - CREATE TEXTAREA INPUT
 // - CREATE CURRENCY INPUT
 // - DIFFERENT TYPES OF BUTTONS
 
